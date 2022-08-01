@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { Footer } from '../components/Footer';
+import Headline from '../components/Headline';
 import Links from '../components/Links';
 import styles from '../styles/Home.module.css';
 
@@ -14,14 +15,8 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>
-					about page <a href="https://nextjs.org">Next.js!</a>
-				</h1>
-
-				<p className={styles.description}>
-					Get started by editing <code className={styles.code}>about/index.js</code>
-				</p>
-<Links />
+				<Headline page="about" />
+				<Links />
 			</main>
 			<Footer />
 		</div>
