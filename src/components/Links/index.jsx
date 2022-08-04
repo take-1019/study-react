@@ -1,4 +1,4 @@
-import classes from './Links.module.css';
+import classes from 'src/components/Links/Links.module.css';
 
 const ITEMS = [
 	{ href: 'https://nextjs.org/docs', title: 'Documentation →', description: 'Find in-depth information about Next.js features and API.' },
