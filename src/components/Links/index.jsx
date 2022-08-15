@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useCallback } from 'react';
 import classes from 'src/components/Links/Links.module.css';
 
 const ITEMS = [
@@ -11,10 +13,11 @@ const ITEMS = [
 	},
 ];
 
-export function Links() {
+export function Links({ items, handleReduce }) {
 	return (
 		<div className={classes.grid}>
-			{ITEMS.map((item) => {
+			<button onClick={handleReduce}>減らす</button>
+			{items.map((item) => {
 				return (
 					<a key={item.href} href={item.href} className={classes.card}>
 						<h2>{item.title}</h2>
