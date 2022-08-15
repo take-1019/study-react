@@ -3,50 +3,14 @@ import styles from '../styles/Home.module.css';
 import { Main } from '../components/Main';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useCallback } from 'react';
+import { useCounter } from '../hooks/useCounter';
+import { useInputArray } from '../hooks/useInputArray';
+import { useBgLightBlue } from '../hooks/useBgLightBlue';
 
 export default function Home() {
-	const [count, setCount] = useState(1);
-	const [text, setText] = useState('');
-	const [isShow, setisShow] = useState(true);
-	const [array, setArray] = useState([]);
-
-	const handleClick = useCallback(() => {
-		if (count < 10) {
-			setCount((prevCount) => prevCount + 1);
-		}
-	}, [count]);
-
-	const handleDisplay = useCallback(() => {
-		setisShow((prevIsShow) => !prevIsShow);
-	}, []);
-
-	const handleAdd = useCallback(() => {
-		setArray((prevArray) => {
-			if (prevArray.some((item) => item === text)) {
-				alert('同じ要素が既に存在します。');
-				return prevArray;
-			}
-			return [...prevArray, text];
-		});
-	}, [text]);
-
-	useEffect(() => {
-		document.body.style.backgroundColor = 'lightblue';
-		return () => {
-			document.body.style.backgroundColor = '';
-		};
-	}, []);
-
-	const handleChange = useCallback((e) => {
-		if (e.target.value.length > 5) {
-			alert('5文字以内にして下さい');
-			return;
-		}
-		setText(e.target.value.trim());
-	}, []);
+	const { count, isShow, handleClick, handleDisplay } = useCounter();
+	const { text, array, handleChange, handleAdd } = useInputArray();
+	useBgLightBlue();
 
 	return (
 		<div className={styles.container}>
@@ -54,11 +18,13 @@ export default function Home() {
 				<title>Index page</title>
 			</Head>
 			<Header />
+
 			{isShow ? <h1>{count}</h1> : null}
 			<button href="/about" onClick={handleClick}>
 				ボタン
 			</button>
 			<button onClick={handleDisplay}>{isShow ? '非表示' : '表示'}</button>
+
 			<input type="text" value={text} onChange={handleChange} />
 			<button onClick={handleAdd}>追加</button>
 			<ul>
@@ -66,6 +32,7 @@ export default function Home() {
 					return <li key={item}>{item}</li>;
 				})}
 			</ul>
+
 			<Main page="index" />
 			<Footer />
 		</div>
