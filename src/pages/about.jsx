@@ -4,14 +4,14 @@ import { Main } from 'src/components/Main';
 import { Footer } from 'src/components/Footer';
 import { Header } from 'src/components/Header';
 
-export default function About({ count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd }) {
+export default function About({ doubleCount, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd }) {
 	return (
 		<div className={styles.container}>
 			<Head>
 				<title>About page</title>
 			</Head>
 			<Header />
-			{isShow ? <h1>{count}</h1> : null}
+			{isShow ? <h1>{doubleCount}</h1> : null}
 			<button href="/about" onClick={handleClick}>
 				ボタン
 			</button>
