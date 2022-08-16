@@ -5,7 +5,7 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { useCounter } from '../hooks/useCounter';
 import { useInputArray } from '../hooks/useInputArray';
-import { useBgLightBlue } from '../hooks/useBgLightBlue';
+import { useBgLightBlue } from '../hooks/useBgColor';
 
 export default function Home(props) {
 	const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
