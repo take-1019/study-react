@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useCommetns } from 'src/hooks/useComments';
+import { useCommetns } from 'src/hooks/useFetchArray';
 
 export const Commetns = () => {
 	const { data, error, isLoading, isEmpty } = useCommetns();
