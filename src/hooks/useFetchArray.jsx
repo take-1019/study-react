@@ -26,3 +26,6 @@ export const useUsers = () => {
 export const useCommetnsByPostsId = (id) => {
 	return useFetchArray(id ? `${API_URL}/comments?postId=${id}` : null, fetcher);
 };
+export const usePostsByUserId = (id) => {
+	return useFetchArray(id ? `${API_URL}/posts?userId=${id}` : null, fetcher);
+};
