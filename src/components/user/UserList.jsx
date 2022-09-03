@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { useUsers } from 'src/hooks/useFetchArray';
+import { useFetchArray } from 'src/hooks/useFetchArray';
+import { API_URL } from 'src/utils/const';
+import { fetcher } from 'src/utils/fetcher';
 
-export const Users = () => {
-	const { data, error, isLoading, isEmpty } = useUsers();
+export const UserList = () => {
+	const { data, error, isLoading, isEmpty } = useFetchArray(`${API_URL}/users`, fetcher);
 
 	if (isLoading) {
 		return <div>ローディング中</div>;
@@ -36,4 +38,4 @@ export const Users = () => {
 	);
 };
 
-export default Users;
+export default UserList;

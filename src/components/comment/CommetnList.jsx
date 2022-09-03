@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { useCommetnsByPostId } from 'src/hooks/useFetchArray';
+import { useFetchArray } from 'src/hooks/useFetchArray';
+import { API_URL } from 'src/utils/const';
+import { fetcher } from 'src/utils/fetcher';
 
-export const CommentsByPostId = (props) => {
-	const { data, error, isLoading, isEmpty } = useCommetnsByPostId(props.id);
+export const CommetnList = () => {
+	const { data, error, isLoading, isEmpty } = useFetchArray(`${API_URL}/comments`, fetcher);
 
 	if (isLoading) {
 		return <div>ローディング中</div>;
@@ -22,7 +24,7 @@ export const CommentsByPostId = (props) => {
 				{data.map((comment) => {
 					return (
 						<li key={comment.id} className="border-b pb-2">
-							<Link href={`/comments/${comment.id}`}>
+							<Link href={`/comments/${comment.id}`} prefetch={false}>
 								<a className="block hover:text-blue-500">{comment.body}</a>
 							</Link>
 						</li>
@@ -32,3 +34,5 @@ export const CommentsByPostId = (props) => {
 		</div>
 	);
 };
+
+export default CommetnList;
